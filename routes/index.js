@@ -1,6 +1,7 @@
 var express         = require('express');
 var router          = express.Router();
 var Message         =	require('../models/messages.js');
+var User                  =	require('../models/user.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,7 +13,14 @@ router.get('/about', function(req, res, next) {
 
 //message
 router.get('/message/:id', function(req, res, next) {
-  res.render('user/message', { title: 'Wp5any',id:req.params.id });
+  //var username = req.user.fullname;
+
+  User.findOne({_id: req.params.id}, function(err, user) {
+    if (err) {
+      return res.write('Error!');
+    }
+    res.render('user/message', { title: 'Wp5any',id:req.params.id, username: user.fullname});
+  });
 });
 
 router.post('/message/:id', function(req, res, next) {
@@ -26,13 +34,5 @@ router.post('/message/:id', function(req, res, next) {
     res.redirect('/');
   });
 });
-
-router.get('/help/:id', function(req, res, next) {
-  res.render('user/help', { title: 'Wp5any' });
-});
-
-router.post('/help', function(req, res, next) {
-});
-
 
 module.exports = router;
