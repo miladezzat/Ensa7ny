@@ -1,0 +1,52 @@
+<div class="row">
+  {{# if hasError}}
+    <div class="col s12 m12 l8 offset-l2">
+      <div class="card red lighten-2">
+        <div class="card-content white-text">
+          {{# each messages}}
+            <p>{{this}}</p>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  <div class="col s12">
+    <form class="col s12 m12 l8 offset-l2 z-depth-5" id="register" action="/users/register" method="post">
+    <p class="center"> <i class="material-icons  large">recent_actors</i></p>
+    <h1 class="center">Register</h1>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="fullname" class="validate" type="text" name="fullname" required>
+        <label for="fullname">Full Name</label>
+      </div>
+
+      <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <input id="email" class="validate" type="email" name="email" required>
+        <label for="email"> Email </label>
+      </div>
+
+      <div class="input-field col s12">
+        <i class="material-icons prefix">visibility_off</i>
+        <input id="password" class="validate" type="password" name="password" required>
+        <label for="password"> Password </label>
+      </div>
+
+      <p>
+        <input name="gender" type="radio" id="male" value="1"  />
+        <label for="male">Male</label>
+      </p>
+      <p>
+        <input name="gender" type="radio" id="female" value="2" />
+        <label for="female">Female</label>
+      </p>
+
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    </div>
+    <button class="btn waves-effect waves-light purple darken-3" type="submit" name="action">Register
+      <i class="material-icons right">send</i>
+    </button> <a href="/users/login"> or Login if you have an  account</a>
+  </form>
+  </div>
+</div>

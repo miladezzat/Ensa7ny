@@ -1,0 +1,59 @@
+var express		            =	require('express');
+var router 		            =	express.Router();
+var csrf		              =	require('csurf');
+var passport	            =	require('passport');
+var User                  =	require('../models/user.js');
+
+//import the controller of users
+var userController        = require("../controllers/userController");
+
+//All methods for control users
+var methodsController     = require("../controllers/methods");
+
+var csrfProtection  = csrf();
+router.use(csrfProtection);
+
+
+//route user profile page
+router.get('/profile', methodsController.isLoggedIn ,userController.profille);
+
+//route user profile page
+router.get('/admin',methodsController.isAdmin, methodsController.isLoggedIn ,userController.admin);
+
+//Delete user
+router.get('/delete/:id',methodsController.isLoggedIn,userController.deleteUser);
+
+//get update users page
+router.get('/update/:id',methodsController.isLoggedIn,userController.updateUser);
+
+//save updateUser
+router.post('/update/:id',userController.updateUserPost);
+
+//logout user
+router.get('/logout', methodsController.isLoggedIn ,userController.userLogout);
+
+router.use('/', methodsController.notLoggedIn, function(req, res, next) {
+  next();
+});
+
+/* GET Register Page. */
+router.get('/register', userController.register);
+
+/* Authenticated Register. */
+router.post('/register', passport.authenticate('local.signup', {
+		successRedirect: '/users/profile',
+		failureRedirect: '/users/register',
+		failureFlash: true
+}));
+
+/* GET Login Page. */
+router.get('/login', userController.login);
+
+/* Authenticated Login*/
+router.post('/login', passport.authenticate('local.signin', {
+		successRedirect: '/users/profile',
+		failureRedirect: '/users/login',
+		failureFlash: true
+}));
+
+module.exports = router;

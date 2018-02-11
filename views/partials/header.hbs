@@ -1,0 +1,28 @@
+<nav>
+  <div class="nav-wrapper teal darken-3">
+    <a href="/" class="brand-logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wp5any
+    </a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/"><i class="material-icons">home</i></a></li>
+      <li><a href="/about">About</a></li>
+      {{# if login}}
+        <li><a href="/users/admin"><i class="material-icons">person</i></a></li>
+        <li><a href="/users/logout">Logout</a></li>
+      {{/if}}
+      <li>&nbsp;&nbsp;&nbsp;</li>
+      <li>&nbsp;&nbsp;&nbsp;</li>
+      <li>&nbsp;&nbsp;&nbsp;</li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <img src="/images/logo.png" alt="Logo" class="circle responsive-img logo">
+      <div class="divider"></div>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      {{# if login}}
+        <li><a href="/users/admin"><i class="material-icons">person</i></a></li>
+        <li><a href="/users/logout">Logout</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>

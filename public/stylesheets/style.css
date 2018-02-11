@@ -1,0 +1,49 @@
+title{
+  font-family: 'Merriweather', serif;
+}
+.brand-logo {
+  font-family: 'Merriweather', serif;
+}
+#main {
+  padding-top: 2%;
+}
+#main #logo {
+  width: 20%;
+}
+#main h1{
+  color: #a2ced8;
+  font-family: 'Lobster', cursive;
+}
+.page-footer{
+  font-size: 16px;
+  margin-bottom: 0px;
+  font-family: 'Raleway', sans-serif;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999999;
+}
+#register{
+  margin-top: 2%;
+  margin-bottom: 10%;
+  padding-bottom: 1%;
+}
+#login{
+  margin-top: 7%;
+  margin-bottom: 8%;
+  padding-bottom: 2%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+#userImage{
+  margin-top: 3%;
+  width: 20%;
+}
+#search{
+  font-size: 18px;
+  color: #000;
+  padding-left: 10%;
+}
+#users{
+  margin-bottom: 8%;
+}
