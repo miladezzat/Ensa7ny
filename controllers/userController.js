@@ -44,13 +44,7 @@ userController.admin = function(req, res, next) {
         return res.write('Error!');
       }
       var username = admin.fullname;
-
-      Message.find({}, function(err, messages){
-        if (err) {
-          throw err;
-        }
-        res.render('admin/admin', { title: 'Wp5any',username: username, users: results, messages: messages});
-      });
+      res.render('admin/admin', { title: 'Wp5any',username: username, users: results});
       });
   });
 };
