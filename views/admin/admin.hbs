@@ -10,8 +10,7 @@
         <tr>
             <th>Full Name</th>
             <th>Emial</th>
-            <th>Age</th>
-            <th>Phone</th>
+            <th>profile</th>
             <th></th>
         </tr>
       </thead>
@@ -22,11 +21,10 @@
         <tr>
           <td>{{this.fullname}}</td>
           <td>{{this.email}}</td>
-          <td>{{this.age}}</td>
-          <td>{{this.phone}}</td>
           <td>
             <a class="waves-effect waves-light btn" href="/users/update/{{this._id}}"> <i class="large material-icons"> mode_edit</i></a>
             <a class="waves-effect waves-light btn" href="/users/delete/{{this._id}}"> <i class="large material-icons"> delete</i></a>
+            <a class="waves-effect waves-light btn" href="/users/userpage/{{this._id}}"> <i class="large material-icons"> send</i></a>
           </td>
         </tr>
         {{/each}}

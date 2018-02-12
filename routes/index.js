@@ -1,6 +1,6 @@
-var express         = require('express');
-var router          = express.Router();
-var Message         =	require('../models/messages.js');
+var express               = require('express');
+var router                = express.Router();
+var Message               =	require('../models/messages.js');
 var User                  =	require('../models/user.js');
 
 /* GET home page. */
@@ -34,5 +34,4 @@ router.post('/message/:id', function(req, res, next) {
     res.redirect('/');
   });
 });
-
 module.exports = router;

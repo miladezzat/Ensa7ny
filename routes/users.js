@@ -3,6 +3,7 @@ var router 		            =	express.Router();
 var csrf		              =	require('csurf');
 var passport	            =	require('passport');
 var User                  =	require('../models/user.js');
+var Message               =	require('../models/messages.js');
 
 //import the controller of users
 var userController        = require("../controllers/userController");
@@ -22,6 +23,27 @@ router.get('/admin',methodsController.isAdmin, methodsController.isLoggedIn ,use
 
 //Delete user
 router.get('/delete/:id',methodsController.isLoggedIn,userController.deleteUser);
+//page user
+router.get('/userpage/:id',methodsController.isLoggedIn,methodsController.isAdmin, function(req, res){
+  User.findOne({_id: req.params.id}, function(err, results) {
+    if (err) {
+      return res.write('Error!');
+    }
+      var username = results.fullname;
+
+      var gender = false;
+      if (results.gender == "1") {
+        gender = true;
+      }
+
+      Message.find({id:results.id}, function(err, messages){
+        if (err) {
+          throw err;
+        }
+        res.render('admin/profile', { title: 'Wp5any',username: username, gender: gender, id:results._id,messages: messages});
+      });
+  });
+});
 
 //get update users page
 router.get('/update/:id',methodsController.isLoggedIn,userController.updateUser);
@@ -31,6 +53,9 @@ router.post('/update/:id',userController.updateUserPost);
 
 //logout user
 router.get('/logout', methodsController.isLoggedIn ,userController.userLogout);
+
+
+
 
 router.use('/', methodsController.notLoggedIn, function(req, res, next) {
   next();
