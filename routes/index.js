@@ -19,7 +19,13 @@ router.get('/message/:id', function(req, res, next) {
     if (err) {
       return res.write('Error!');
     }
-    res.render('user/message', { title: 'Ensa7ny',id:req.params.id, username: user.fullname});
+
+    var gender = false;
+    if (user.gender == "1") {
+      gender = true;
+    }
+
+    res.render('user/message', { title: 'Ensa7ny',id:req.params.id, username: user.fullname,gender: gender});
   });
 });
 
