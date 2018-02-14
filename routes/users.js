@@ -59,7 +59,7 @@ router.get('/userpage/:id',methodsController.isLoggedIn,methodsController.isAdmi
         if (err) {
           throw err;
         }
-        res.render('admin/profile', { title: 'Wp5any',username: username, gender: gender, id:results._id,messages: messages});
+        res.render('admin/profile', { title: 'Ensahny',username: username, gender: gender, id:results._id,messages: messages});
       });
   });
 });

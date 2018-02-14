@@ -5,10 +5,10 @@ var User                  =	require('../models/user.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Wp5any' });
+  res.render('index', { title: 'Ensahny' });
 });
 router.get('/about', function(req, res, next) {
-  res.render('user/about', { title: 'Wp5any' });
+  res.render('user/about', { title: 'Ensahny' });
 });
 
 //message
@@ -19,7 +19,7 @@ router.get('/message/:id', function(req, res, next) {
     if (err) {
       return res.write('Error!');
     }
-    res.render('user/message', { title: 'Wp5any',id:req.params.id, username: user.fullname});
+    res.render('user/message', { title: 'Ensahny',id:req.params.id, username: user.fullname});
   });
 });
 

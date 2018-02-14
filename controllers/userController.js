@@ -24,7 +24,7 @@ userController.profille = function(req, res, next) {
         if (err) {
           throw err;
         }
-        res.render('user/profile', { title: 'Wp5any',username: username, gender: gender, id:results._id,messages: messages});
+        res.render('user/profile', { title: 'Ensahny',username: username, gender: gender, id:results._id,messages: messages});
       });
     }
     if (results.permation == "1") {
@@ -44,7 +44,7 @@ userController.admin = function(req, res, next) {
         return res.write('Error!');
       }
       var username = admin.fullname;
-      res.render('admin/admin', { title: 'Wp5any',username: username, users: results});
+      res.render('admin/admin', { title: 'Ensahny',username: username, users: results});
       });
   });
 };
@@ -63,7 +63,7 @@ userController.updateUser = function(req, res, next) {
     if (err) {
       return res.write('Error!');
     }
-    res.render('admin/update', { title: 'Wp5any',user: results,csrfToken: req.csrfToken()});
+    res.render('admin/update', { title: 'Ensahny',user: results,csrfToken: req.csrfToken()});
   });
 };
 
@@ -86,13 +86,13 @@ userController.userLogout = function(req, res, next) {
 // Restrict access to Register page
 userController.register = function(req, res, next) {
   var messages = req.flash('error');
-  res.render('user/register', { title: 'Wp5any', csrfToken: req.csrfToken(), messages: messages, hasError: messages.length >0 });
+  res.render('user/register', { title: 'Ensahny', csrfToken: req.csrfToken(), messages: messages, hasError: messages.length >0 });
 };
 
 // Restrict access to login page
 userController.login = function(req, res, next) {
   var messages = req.flash('error');
-  res.render('user/login', { title: 'Wp5any', csrfToken: req.csrfToken(), messages: messages, hasError: messages.length >0 });
+  res.render('user/login', { title: 'Ensahny', csrfToken: req.csrfToken(), messages: messages, hasError: messages.length >0 });
 };
 
 module.exports = userController;
