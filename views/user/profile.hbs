@@ -1,23 +1,24 @@
 <div class="row">
   <div class="col s12 m8 offset-m2 center">
     {{# if gender}}
-    <img id="userImage" class="responsive-img z-depth-5  circle" src="/images/user.jpg" alt="User">
+    <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.jpg" alt="User">
     {{else}}
-    <img id="userImage" class="responsive-img z-depth-5  circle" src="/images/user.svg" alt="User">
+    <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.svg" alt="User">
     {{/if}}
-    <h2>{{username}}</h2>
-    <!--<a class="waves-effect waves-light btn" href="/message/{{id}}"> <i class="large material-icons right"> send</i> your Link</a>-->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://wp5any.herokuapp.com/message/{{id}}" target="_blank">
-        Share Your Link on Facebook
-    </a>
+    <h2 class="animated jello">{{username}}</h2>
+    <a class="waves-effect waves-light btn" href="/message/{{id}}"> <i class="large material-icons right"> send</i> your Link</a> <br> <br><br>
+    <div class="fb-share-button" data-href="https://wp5any.herokuapp.com/message/{{id}}" data-layout="button_count" data-size="small" data-mobile-iframe="true">
+      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wp5any.herokuapp.com/message/{{id}}" class="fb-xfbml-parse-ignore">مشاركة
+      </a>
+    </div>
   </div>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <h3 class="center">Messages</h3>
+  <h3 class="center animated slideInDown">Messages</h3>
   {{#each messages}}
   <div class="col s12 m8 offset-m2">
-    <div class="card blue-grey darken-1">
+    <div class="card blue-grey darken-1 animated fadeIn">
       <div class="card-content white-text">
-        <p>
+        <p class="animated zoomInLeft">
           {{this.text}}
           <a class="waves-effect waves-light btn right" href="/users/deletmessage/{{this._id}}"> <i class="large material-icons"> clear</i></a>
         </p>

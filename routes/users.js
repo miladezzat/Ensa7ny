@@ -15,6 +15,13 @@ var csrfProtection  = csrf();
 router.use(csrfProtection);
 
 
+/*router.get('/auth/facebook', passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }));
+router.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: 'email' })
+);
+*/
 //route user profile page
 router.get('/profile', methodsController.isLoggedIn ,userController.profille);
 
