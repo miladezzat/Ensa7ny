@@ -81,9 +81,12 @@ router.use('/', methodsController.notLoggedIn, function(req, res, next) {
 
 /* GET Register Page. */
 router.get('/register', userController.register);
+
+//if forget your password
 router.get('/email', function(req, res){
   res.render('user/email');
 });
+
 
 /* Authenticated Register. */
 router.post('/register', passport.authenticate('local.signup', {
