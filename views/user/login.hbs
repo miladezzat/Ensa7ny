@@ -14,7 +14,7 @@
     <form class="col s12 m8 offset-m2 z-depth-5" id="login" action="/users/login" method="post">
       <p class="center"> <i class="material-icons large animated zoomInDown ">supervisor_account</i></p>
 
-      <h1 class="center animated zoomIn">Login</h1>
+      <h1 class="center animated zoomIn">دخول</h1>
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
@@ -28,9 +28,10 @@
         </div>
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
       </div>
-      <button class="btn waves-effect waves-light teal darken-3" type="submit" name="action">Login
+      <button class="btn waves-effect waves-light teal darken-3 right" type="submit" name="action">Login
         <i class="material-icons right">send</i>
-      </button> <a href="/users/register"> or Register if you have not an  account</a>
+      </button><br> <br> <a href="/users/register">Register if you have not an  account</a> <br> <br>
+      <a href="/users/email"> Forget password</a>
     </form>
   </div>
 </div>

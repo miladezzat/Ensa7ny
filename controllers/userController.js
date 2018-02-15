@@ -43,6 +43,10 @@ userController.admin = function(req, res, next) {
       if (err) {
         return res.write('Error!');
       }
+      //var decrypt      = require('decrypt-nodejs');
+      //return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
+      //console.log(decrypt.hashSync(results[0].password, decrypt.genSaltSync(5), null));
+      //console.log(decrypt.hashSync(password, bcrypt.genSaltSync(5), null));
       var username = admin.fullname;
       res.render('admin/admin', { title: 'Ensa7ny',username: username, users: results});
       });

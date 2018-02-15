@@ -1,0 +1,28 @@
+<div class="row">
+  {{# if hasError}}
+    <div class="col s12 m12 l8 offset-l2">
+      <div class="card red lighten-2">
+        <div class="card-content white-text">
+          {{# each messages}}
+            <p>{{this}}</p>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  <div class="col s12">
+    <form class="col s12 m8 offset-m2 z-depth-5" id="login" action="/users/email" method="post">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email" class="validate" type="text" name="email" required>
+          <label for="email">Email</label>
+        </div>
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+      </div>
+      <button class="btn waves-effect waves-light teal darken-3" type="submit" name="action">Send
+        <i class="material-icons right">send</i>
+      </button> <br> <br>
+    </form>
+  </div>
+</div>

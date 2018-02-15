@@ -16,10 +16,13 @@ var MongoStroe    = require('connect-mongo')(session);
 var users 			  = require('./routes/users');
 var index 			  = require('./routes/index');
 
-var app 			= express();
+var app 			    = express();
 
 
 //connection to MongoDB Local
+
+//mongodb://wp5any:123456@ds229418.mlab.com:29418/wp5any
+//mongodb://localhost:27017/wp5any
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://wp5any:123456@ds229418.mlab.com:29418/wp5any')
   .then(() =>  console.log('connection succesful'))
