@@ -33,7 +33,6 @@ router.get('/delete/:id',methodsController.isLoggedIn,userController.deleteUser)
 
 //delete message of the user
 router.get('/deletmessage/:id',methodsController.isLoggedIn,function(req, res){
-  console.log(req.params.id);
   Message.remove({_id: req.params.id }, function(err,removed) {
     if (err) {
       res.redirect('/');

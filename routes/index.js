@@ -2,13 +2,28 @@ var express               = require('express');
 var router                = express.Router();
 var Message               =	require('../models/messages.js');
 var User                  =	require('../models/user.js');
+var FeedBack               =	require('../models/feedback.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Ensa7ny' });
 });
+
 router.get('/about', function(req, res, next) {
   res.render('user/about', { title: 'Ensa7ny' });
+});
+
+router.post('/about', function(req, res, next) {
+  //console.log(req.body.msg);
+  var newFeedback = new FeedBack();
+  newFeedback.text = req.body.msg;
+  newFeedback.email = req.body.email;
+  newFeedback.save(function (err, result) {
+    if (err) {
+      return done(err);
+    }
+    res.redirect('/');
+  });
 });
 
 //message

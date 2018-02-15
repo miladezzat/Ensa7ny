@@ -3,6 +3,7 @@ var passport        = require("passport");
 var User            = require("../models/user");
 var methodsControl  = require("./methods.js");
 var Message         =	require('../models/messages.js');
+var FeedBack               =	require('../models/feedback.js');
 var userController  = {};
 
 // Restrict access to profile page
@@ -41,14 +42,19 @@ userController.admin = function(req, res, next) {
     }
     User.find({}, function(err, results) {
       if (err) {
-        return res.write('Error!');
+        throw err;
       }
+      FeedBack.find({}, function(err, feedbacks){
+        if (err) {
+          throw err
+        }
+        var username = admin.fullname;
+        res.render('admin/admin', { title: 'Ensa7ny',username: username, users: results, feedback : feedbacks});  
+      });
       //var decrypt      = require('decrypt-nodejs');
       //return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
       //console.log(decrypt.hashSync(results[0].password, decrypt.genSaltSync(5), null));
       //console.log(decrypt.hashSync(password, bcrypt.genSaltSync(5), null));
-      var username = admin.fullname;
-      res.render('admin/admin', { title: 'Ensa7ny',username: username, users: results});
       });
   });
 };
