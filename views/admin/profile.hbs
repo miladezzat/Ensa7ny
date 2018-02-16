@@ -8,9 +8,17 @@
 <div class="row">
   <div class="col s12 m8 offset-m2 center">
     {{# if gender}}
-    <img id="userImage" class="responsive-img z-depth-5  circle" src="/images/user.jpg" alt="User">
+      {{# if userImage}}
+      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="{{userImage}}" alt="User">
+      {{else}}
+      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.jpg" alt="User">
+      {{/if}}
     {{else}}
-    <img id="userImage" class="responsive-img z-depth-5  circle" src="/images/user.svg" alt="User">
+      {{# if userImage}}
+      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="{{userImage}}" alt="User">
+      {{else}}
+      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.svg" alt="User">
+      {{/if}}
     {{/if}}
     <h2>{{username}}</h2>
     <a class="waves-effect waves-light btn" href="/message/{{id}}"> <i class="large material-icons right"> mode_edit</i> your Link</a>
