@@ -2,9 +2,17 @@
   <h3 class="center"> Ensa7</h3>
   <div class="col s12 m8 offset-m2 center">
     {{# if gender}}
-    <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.jpg" alt="User">
+      {{# if userImage}}
+      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="{{userImage}}" alt="User">
+      {{else}}
+      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.jpg" alt="User">
+      {{/if}}
     {{else}}
-    <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.svg" alt="User">
+      {{# if userImage}}
+      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="{{userImage}}" alt="User">
+      {{else}}
+      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.svg" alt="User">
+      {{/if}}
     {{/if}}
     <h2 class="animated zoomInUp"> {{username}}</h2>
   </div>
