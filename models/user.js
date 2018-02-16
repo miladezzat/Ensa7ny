@@ -7,7 +7,8 @@ var userSchema = new Schema({
 	email:   	{type: String, required: true, unique: true},
 	permation:   {type: String, required: true},
 	gender:   {type: String, required: true},
-	password:   {type: String, required: true}
+	password:   {type: String},
+	image:   {type: String}
 });
 
 userSchema.methods.encryptPassword = function (password) {

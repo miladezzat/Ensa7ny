@@ -1,7 +1,7 @@
-var passport = 	require('passport');
-var User	=	require('../models/user');
-var LocalStrategy = require('passport-local').Strategy;
-//var FacebookStrategy = require('passport-facebook').Strategy;
+var passport 						= 	require('passport');
+var User								=	require('../models/user');
+var LocalStrategy 			= require('passport-local').Strategy;
+var FacebookStrategy 		= require('passport-facebook').Strategy;
 
 passport.serializeUser(function (user, done) {
 	done(null, user.id);
@@ -92,3 +92,41 @@ passport.use('local.signin', new LocalStrategy({
 			return done(null, user);
 		});
 }));
+
+
+passport.use('facebook',new FacebookStrategy({
+    clientID: '147826179171551',
+    clientSecret: '3792d86d19bd1f100ffebb6923e626ba',
+    callbackURL: "http://http://ensa7ny.herokuapp.com//auth/facebook/callback",
+		profileFields: ['id', 'displayName', 'photos', 'email','gender']
+  },
+  function(accessToken, refreshToken, profile, done) {
+
+		User.findOne({email:profile.emails[0].value}, function(err, results) {
+			if (err) {
+				return res.write('Error!');
+			}
+			if (results && results != null ) {
+				done(null, results)
+			} else{
+				console.log("Done");
+				var newUser = new User();
+				newUser.fullname 	= profile.displayName;
+				newUser.email    	= profile.emails[0].value;
+				if (profile.gender == "male") {
+					newUser.gender   	= '1';
+				} else {
+					newUser.gender   	= "2";
+				}
+				newUser.image    	= profile.photos[0].value;
+				newUser.permation = '2';
+				newUser.save(function (err, result) {
+					if (err) {
+						return done(err);
+					}
+					return done(null, newUser);
+				});
+			}
+		});
+  }
+));

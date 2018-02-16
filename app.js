@@ -11,12 +11,12 @@ var passport		  = require('passport');
 var flash  			  = require('connect-flash');
 var validator     = require('express-validator');
 var MongoStroe    = require('connect-mongo')(session);
-
+var app 			    = express();
 
 var users 			  = require('./routes/users');
 var index 			  = require('./routes/index');
+//var social        = require('./config/fblogin.js')(app, passport);
 
-var app 			    = express();
 
 
 //connection to MongoDB Local
@@ -47,7 +47,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: new MongoStroe({ mongooseConnection: mongoose.connection}),
-  cookie: { maxAge: 180 * 60 *100}
+  cookie: { maxAge: 18000 * 6000 * 100000}
 }));
 app.use(flash());
 

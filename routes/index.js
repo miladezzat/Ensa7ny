@@ -2,7 +2,16 @@ var express               = require('express');
 var router                = express.Router();
 var Message               =	require('../models/messages.js');
 var User                  =	require('../models/user.js');
-var FeedBack               =	require('../models/feedback.js');
+var FeedBack              =	require('../models/feedback.js');
+var passport		          = require('passport');
+
+
+//router.get('/auth/facebook', passport.authenticate('facebook'));
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/users/login' }));
+
+router.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: 'email' })
+);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

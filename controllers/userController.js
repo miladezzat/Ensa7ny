@@ -13,9 +13,8 @@ userController.profille = function(req, res, next) {
       return res.write('Error!');
     }
     if (results.permation == "2") {
-
+      console.log(results.gender);
       var username = results.fullname;
-
       var gender = false;
       if (results.gender == "1") {
         gender = true;
@@ -25,7 +24,7 @@ userController.profille = function(req, res, next) {
         if (err) {
           throw err;
         }
-        res.render('user/profile', { title: 'Ensa7ny',username: username, gender: gender, id:results._id,messages: messages});
+        res.render('user/profile', { title: 'Ensa7ny',username: username, gender: gender, id:results._id,messages: messages, userImage: results.image });
       });
     }
     if (results.permation == "1") {
@@ -49,7 +48,7 @@ userController.admin = function(req, res, next) {
           throw err
         }
         var username = admin.fullname;
-        res.render('admin/admin', { title: 'Ensa7ny',username: username, users: results, feedback : feedbacks});  
+        res.render('admin/admin', { title: 'Ensa7ny',username: username, users: results, feedback : feedbacks});
       });
       //var decrypt      = require('decrypt-nodejs');
       //return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
