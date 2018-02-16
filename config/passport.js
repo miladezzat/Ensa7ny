@@ -97,7 +97,7 @@ passport.use('local.signin', new LocalStrategy({
 passport.use('facebook',new FacebookStrategy({
     clientID: '147826179171551',
     clientSecret: '3792d86d19bd1f100ffebb6923e626ba',
-    callbackURL: "http://http://ensa7ny.herokuapp.com//auth/facebook/callback",
+    callbackURL: "https://ensa7ny.herokuapp.com//auth/facebook/callback",
 		profileFields: ['id', 'displayName', 'photos', 'email','gender']
   },
   function(accessToken, refreshToken, profile, done) {
