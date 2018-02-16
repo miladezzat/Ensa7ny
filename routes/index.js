@@ -49,7 +49,7 @@ router.get('/message/:id', function(req, res, next) {
       gender = true;
     }
 
-    res.render('user/message', { title: 'Ensa7ny',id:req.params.id, username: user.fullname,gender: gender});
+    res.render('user/message', { title: 'Ensa7ny',id:req.params.id, username: user.fullname,gender: gender,userImage: results.image});
   });
 });
 
