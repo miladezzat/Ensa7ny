@@ -13,6 +13,12 @@ router.get('/auth/facebook',
   passport.authenticate('facebook', { scope: 'email' })
 );
 
+
+/* GET Share message page. */
+router.get('/messageShare/:text', function(req, res, next) {
+  res.render('user/messageShared', { title: 'Ensa7ny', message: req.params.text });
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Ensa7ny' });
