@@ -11,17 +11,10 @@ var userController        = require("../controllers/userController");
 //All methods for control users
 var methodsController     = require("../controllers/methods");
 
-var csrfProtection  = csrf();
+var csrfProtection        = csrf();
 router.use(csrfProtection);
 
 
-/*router.get('/auth/facebook', passport.authenticate('facebook'));
-
-router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }));
-router.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: 'email' })
-);
-*/
 //route user profile page
 router.get('/profile', methodsController.isLoggedIn ,userController.profille);
 
@@ -47,9 +40,9 @@ router.get('/userpage/:id',methodsController.isLoggedIn,methodsController.isAdmi
     if (err) {
       return res.write('Error!');
     }
-      var username = results.fullname;
+      var username  = results.fullname;
+      var gender    = false;
 
-      var gender = false;
       if (results.gender == "1") {
         gender = true;
       }

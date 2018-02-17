@@ -2,15 +2,15 @@
   <div class="col s12 m8 offset-m2 center">
     {{# if gender}}
       {{# if userImage}}
-      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="{{userImage}}" alt="User">
+      <img  class="userImage responsive-img z-depth-5  circle animated zoomInDown" src="{{userImage}}" alt="User">
       {{else}}
-      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.jpg" alt="User">
+      <img  class="userImage responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.jpg" alt="User">
       {{/if}}
     {{else}}
       {{# if userImage}}
-      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="{{userImage}}" alt="User">
+      <img class="userImage responsive-img z-depth-5  circle animated zoomInDown" src="{{userImage}}" alt="User">
       {{else}}
-      <img id="userImage" class="responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.svg" alt="User">
+      <img class="userImage responsive-img z-depth-5  circle animated zoomInDown" src="/images/user.svg" alt="User">
       {{/if}}
     {{/if}}
     <h2 class="animated zoomInLeft">{{username}}</h2>

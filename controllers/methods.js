@@ -1,7 +1,8 @@
-var mongoose = require("mongoose");
-var passport = require("passport");
-var User = require("../models/user");
+var mongoose    = require("mongoose");
+var passport    = require("passport");
+var User        = require("../models/user");
 
+//object for methods
 var methodsControl = {};
 
 // Update user function

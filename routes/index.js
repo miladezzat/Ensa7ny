@@ -6,7 +6,7 @@ var FeedBack              =	require('../models/feedback.js');
 var passport		          = require('passport');
 
 
-//router.get('/auth/facebook', passport.authenticate('facebook'));
+//Register via facebook
 router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/users/profile', failureRedirect: '/users/login' }));
 
 router.get('/auth/facebook',
@@ -14,44 +14,42 @@ router.get('/auth/facebook',
 );
 
 
-/* GET Share message page. */
-/*router.get('/messageShare/:text', function(req, res, next) {
-  res.render('user/messageShared', { title: 'Ensa7ny', message: req.params.text });
-});
-*/
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Ensa7ny' });
 });
 
+//get about page and feedback page
 router.get('/about', function(req, res, next) {
   res.render('user/about', { title: 'Ensa7ny' });
 });
 
+// post feedback
 router.post('/about', function(req, res, next) {
-  //console.log(req.body.msg);
-  var newFeedback = new FeedBack();
-  newFeedback.text = req.body.msg;
+
+  var newFeedback   = new FeedBack();
+  newFeedback.text  = req.body.msg;
   newFeedback.email = req.body.email;
+
   newFeedback.save(function (err, result) {
     if (err) {
       return done(err);
     }
     res.redirect('/');
   });
+
 });
 
-//message
+//get the message page
 router.get('/message/:id', function(req, res, next) {
-  //var username = req.user.fullname;
 
   User.findOne({_id: req.params.id}, function(err, user) {
     if (err) {
       return res.write('Error!');
     }
 
-    var gender = false;
+    var gender      = false;
+
     if (user.gender == "1") {
       gender = true;
     }
@@ -60,10 +58,13 @@ router.get('/message/:id', function(req, res, next) {
   });
 });
 
+//save message user to database
 router.post('/message/:id', function(req, res, next) {
-  var newMessage = new Message();
-  newMessage.text = req.body.msg;
-  newMessage.id = req.params.id;
+
+  var newMessage    = new Message();
+  newMessage.text   = req.body.msg;
+  newMessage.id     = req.params.id;
+  
   newMessage.save(function (err, result) {
     if (err) {
       return done(err);
